@@ -1,11 +1,5 @@
 /* Reset default margins and paddings */
-body,
-h1,
-h2,
-h3,
-p,
-ul,
-li {
+body, h1, h2, h4, p, ul, li {
   margin: 0;
   padding: 0;
 }
@@ -16,35 +10,51 @@ body {
   text-align: center;
 }
 
-h1,
-h2 {
+h1, h2 {
   font-family: 'Imbue', serif;
   font-size: 3.5rem;
   padding: 1.5rem;
+}
+
+h3 {
+  padding: 5rem 0 5rem 0;
 }
 
 .shop-now-link {
   color: #333;
 }
 
+.shop-now-link:hover {
+  color: #33333339;
+}
+
 /* Navbar styles */
-
-
 ul {
   list-style: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around; /* Change to space-around */
+  flex-wrap: wrap;
 }
-
 
 /* Styling links in the navbar */
 nav a {
   text-decoration: none;
   color: #333;
-
   padding: 1rem 2rem;
 }
 
 nav a:hover {
   text-decoration: underline;
+}
+
+/* Styling images in the Categories component */
+header img {
+  width: 45rem;
+  height: 22rem;
+}
+
+main img {
+  width: 15rem;
+  height: 20rem;
+  margin: 1rem; /* Add space between images */
 }

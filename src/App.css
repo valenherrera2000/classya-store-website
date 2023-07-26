@@ -1,42 +1,50 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Reset default margins and paddings */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'News Cycle', sans-serif;
+  font-size: 1.5rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1,
+h2 {
+  font-family: 'Imbue', serif;
+  font-size: 3.5rem;
+  padding: 1.5rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.shop-now-link {
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Navbar styles */
+
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.card {
-  padding: 2em;
+
+/* Styling links in the navbar */
+nav a {
+  text-decoration: none;
+  color: #333;
+
+  padding: 1rem 2rem;
 }
 
-.read-the-docs {
-  color: #888;
+nav a:hover {
+  text-decoration: underline;
 }

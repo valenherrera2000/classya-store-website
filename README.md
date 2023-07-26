@@ -1,8 +1,17 @@
-# React + Vite
+# Classya Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site Host: http://localhost:5173/
 
-Currently, two official plugins are available:
+Classya Store is an elegant e-commerce website that offers a curated collection of stylish clothing for women. The website aims to provide a seamless shopping experience for users, showcasing a range of fashionable items that cater to different styles and occasions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Inspiration
+
+Classya Store draws inspiration from renowned fashion brands such as Zara and Portsaid. These brands are known for their timeless and sophisticated aesthetics, which Classya Store aims to emulate while providing a unique shopping experience tailored to its users.
+
+# Tools Used
+
+The Classya Store website is developed using the following technologies:
+
+HTML: To create the structure and content of the web pages.
+CSS: For styling and visual presentation, ensuring an elegant and appealing design.
+React: As the front-end JavaScript library for building interactive user interfaces.

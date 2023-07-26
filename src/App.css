@@ -1,23 +1,75 @@
-/* Reset default margins and paddings */
-body, h1, h2, h4, p, ul, li {
+/* Reset */
+body,
+h1,
+h2,
+h4,
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
 }
 
+/* Body style */
 body {
   font-family: 'News Cycle', sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-align: center;
 }
 
-h1, h2 {
+/* Header style */
+h1 {
   font-family: 'Imbue', serif;
   font-size: 3.5rem;
-  padding: 1.5rem;
+  padding: 0.5rem;
+}
+
+h2 {
+  font-family: 'Imbue', serif;
+  font-size: 3.2rem;
+  padding: 2rem;
 }
 
 h3 {
-  padding: 5rem 0 5rem 0;
+  padding: 2.5rem 0 1rem 0;
+}
+
+header {
+  position: relative;
+}
+
+header img {
+  width: 45rem;
+  height: 22rem;
+  margin-top: 6.5rem;
+}
+
+.menu-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+.menu-section img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.7rem;
+}
+
+.cart-icon {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon p {
+  font-family: 'News Cycle', sans-serif;
+  font-size: 1.2rem;
 }
 
 .shop-now-link {
@@ -28,33 +80,88 @@ h3 {
   color: #33333339;
 }
 
-/* Navbar styles */
+/* Main style */
+main img {
+  width: 15rem;
+  height: 20rem;
+  margin: 1rem;
+}
+
+/* NavBar style */
+nav {
+  margin: 3rem;
+}
+
 ul {
   list-style: none;
   display: flex;
-  justify-content: space-around; /* Change to space-around */
+  justify-content: center;
   flex-wrap: wrap;
 }
 
-/* Styling links in the navbar */
 nav a {
   text-decoration: none;
   color: #333;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
+  margin: 0.5rem;
 }
 
 nav a:hover {
   text-decoration: underline;
 }
 
-/* Styling images in the Categories component */
-header img {
-  width: 45rem;
-  height: 22rem;
+/* Store Details */
+.store-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 26rem;
+  margin: 0 auto;
 }
 
-main img {
-  width: 15rem;
-  height: 20rem;
-  margin: 1rem; /* Add space between images */
+.store-details img {
+  width: 100%;
+  height: auto;
+  max-width: 12rem;
+  max-height: 9rem;
+  margin: 0.5rem;
+}
+
+/* Payment methods style */
+
+.payment-methods {
+  text-align: center;
+  margin: 2rem 0; 
+}
+.payment-methods img {
+  width: 23rem;
+  height: 7rem;
+}
+
+/* Footer styles */
+footer {
+  background-color: #D9D9D9;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Footer h2 style */
+footer h2 {
+  padding: 1rem;
+}
+
+/* Footer links styles */
+footer a {
+  text-decoration: underline;
+  color: #333;
+  font-size: 1.2rem;
+  margin: 0.9rem;
+  display: inline-block;
+}
+
+/* Footer paragraph styles */
+footer p {
+  font-family: 'News Cycle', sans-serif;
+  margin: 0.1rem;
+  font-size: 0.8rem;
 }

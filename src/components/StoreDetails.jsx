@@ -6,7 +6,7 @@ import storeDetails4 from '../assets/img/customer-love.png';
 
 const StoreDetails = () => {
     return (
-        <div className = "store-details">
+        <div id="about" className = "store-details">
             <img src={storeDetails1} alt="Free Shipping Message" />
             <img src={storeDetails2} alt="Many Stores Message" />
             <img src={storeDetails3} alt="Climate Neutral Message" />

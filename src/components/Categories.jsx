@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Cart } from './CartIcon';
 
 const Categories = () => {
     const [products, setProducts] = useState([]);
+    const [cartCount, setCartCount] = useState(0);
 
     useEffect(() => {
         fetch('/products.json')
@@ -12,6 +14,11 @@ const Categories = () => {
     }, []);
 
     const categories = ['PANTS', 'SHIRTS', 'SWEATERS', 'ACCESSORIES'];
+
+    const addToCart = () => {
+        setCartCount(cartCount + 1);
+    };
+
 
     return (
         <div className="category-section">
@@ -28,7 +35,7 @@ const Categories = () => {
                                     <h4>${product.price}</h4>
                                     <p>{product.description}</p>
                                     {category !== 'ACCESSORIES' ? (
-                                        <div class="sizes">
+                                        <div className="sizes">
                                             <button>XS</button>
                                             <button>S</button>
                                             <button>M</button>
@@ -36,7 +43,7 @@ const Categories = () => {
                                             <button>XL</button>
                                         </div>
                                     ) : null}
-                                    <button>+</button>
+                                    <button onClick={addToCart}>+</button>
                                 </div>
                             ))}
                     </div>

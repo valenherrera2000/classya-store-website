@@ -5,10 +5,7 @@ import StoreDetails from './components/StoreDetails';
 import Categories from './components/Categories';
 import BottomDetails from './components/BottomDetails';
 import Footer from './components/Footer';
-import './App.css'
-
-
-
+import './css/App.css'
 
 function App() {
   return (
@@ -29,4 +26,5 @@ function App() {
   );
 };
 
-export default App
+
+export default App;

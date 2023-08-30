@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Cart } from './CartIcon';
 import homeBannerImg from '../assets/img/home-banner.png';
 import menuImg from '../assets/img/menu-icon.png';
-import cartImg from '../assets/img/shopping-cart-icon.png';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,10 +28,9 @@ const Header = () => {
                 <a href="#menu">
                     <h1>Classya</h1>
                 </a>
-                <div className="cart-icon">
-                    <p>0</p>
-                    <img src={cartImg} alt="Cart Icon" />
-                </div>
+                <Link to="/checkout" title="View cart info">
+                    <Cart />
+                </Link>
             </div>
             <div id="menu" className="banner">
                 <img src={homeBannerImg} alt="Classya Cover" />

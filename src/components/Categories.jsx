@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Cart } from './CartIcon';
+import React, { useState, useEffect, useContext } from 'react';
+import {CartContext} from '../components/ShoppingContext'
 
 const Categories = () => {
+
+    /* Fetch products */
     const [products, setProducts] = useState([]);
-    const [cartCount, setCartCount] = useState(0);
 
     useEffect(() => {
         fetch('/products.json')
@@ -15,10 +16,45 @@ const Categories = () => {
 
     const categories = ['PANTS', 'SHIRTS', 'SWEATERS', 'ACCESSORIES'];
 
-    const addToCart = () => {
-        setCartCount(cartCount + 1);
-    };
 
+    /* Add products */
+
+    const [cart, setCart] = useContext(CartContext);
+
+    const addToCart = (id, price) => { // Add parameters for id and price
+        setCart((currItems) => {
+            const isItemFound = currItems.find((item) => item.id === id); // Use triple equals (===) for strict equality
+            if (isItemFound) {
+                return currItems.map((item) => {
+                    if (item.id === id) {
+                        return { ...item, quantity: item.quantity + 1 }
+                    } else {
+                        return item;
+                    }
+                });
+            } else {
+                return [...currItems, { id, quantity: 1, price }];
+            }
+        });
+    }
+
+    /* Remove products */
+
+    const removeItem = (id) => {
+        setCart((currItems) => {
+            if(currItems.find((item) => item.id == id) ?.quantity === 1) {
+                return currItems.filter((item) => item.id !== id);
+            } else{
+                return currItems.map((item) => {
+                    if(item.id === id){
+                        return {...item, quantity: item.quantity - 1};
+                    }else{
+                        return item;
+                    }
+                });
+            }
+        });
+    }
 
     return (
         <div className="category-section">
@@ -34,16 +70,7 @@ const Categories = () => {
                                     <h3>{product.name}</h3>
                                     <h4>${product.price}</h4>
                                     <p>{product.description}</p>
-                                    {category !== 'ACCESSORIES' ? (
-                                        <div className="sizes">
-                                            <button>XS</button>
-                                            <button>S</button>
-                                            <button>M</button>
-                                            <button>L</button>
-                                            <button>XL</button>
-                                        </div>
-                                    ) : null}
-                                    <button onClick={addToCart}>+</button>
+                                    <button onClick={() => addToCart(product.id, product.price)}>+</button>
                                 </div>
                             ))}
                     </div>

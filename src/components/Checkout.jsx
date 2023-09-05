@@ -85,8 +85,13 @@ const Checkout = () => {
                 <textarea></textarea>
             </div>
             <div className="checkout-buttons">
-                <button>Finish</button>
-                <button>Cancel</button>
+                <Link to="/finish" style={{ textDecoration: 'none' }}>
+                    <button>Finish</button>
+                </Link>
+                <Link to="/" style={{ textDecoration: 'none' }}>
+                    <button>Cancel</button>
+                </Link>
+
             </div>
         </div>
     );

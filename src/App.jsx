@@ -5,23 +5,27 @@ import StoreDetails from './components/StoreDetails';
 import Categories from './components/Categories';
 import BottomDetails from './components/BottomDetails';
 import Footer from './components/Footer';
+import { ShoppingCartProvider } from './components/ShoppingContext';
 import './css/App.css'
+
 
 function App() {
   return (
     <>
-      <header>
-        <Header />
-        <StoreDetails />
-        <NavBar />
-      </header>
-      <main >
-        <Categories />
-        <BottomDetails />
-      </main >
-      <footer>
-        <Footer />
-      </footer>
+      <ShoppingCartProvider>
+        <header>
+          <Header />
+          <StoreDetails />
+          <NavBar />
+        </header>
+        <main >
+          <Categories />
+          <BottomDetails />
+        </main >
+        <footer>
+          <Footer />
+        </footer>
+      </ShoppingCartProvider>
     </>
   );
 };

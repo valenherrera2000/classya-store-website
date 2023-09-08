@@ -301,6 +301,21 @@ nav a:hover {
   transform: scale(1.05);
 }
 
+
+.selected-products {
+  display: flex;
+  align-items: center; 
+}
+
+.selected-products button {
+  margin: 0 0.5rem; 
+}
+
+.selected-products p {
+  margin: 0 3rem; 
+}
+
+
 /* Bottom Details */
 .bottom-details {
   display: flex;

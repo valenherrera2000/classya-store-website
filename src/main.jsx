@@ -14,12 +14,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/navbar" element={<NavBar />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/finish" element={<CheckoutFinish />} />
-        <Route path="/footer" element={<Footer />} />
+        
+          <Route path="/" element={<App />} />
+          <Route path="/navbar" element={<NavBar />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/finish" element={<CheckoutFinish />} />
+          <Route path="/footer" element={<Footer />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

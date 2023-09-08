@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classyaLogo from '../assets/img/classya-icon.png';
+import { CartContext } from './ShoppingContext';
 import '../css/Checkout.css';
 
 const Checkout = () => {
+
+    const [cart, setCart] = useContext(CartContext);
+
+    // Calculate total quantity and total cost
+    const quantity = cart.reduce((acc, curr) => {
+        return acc + curr.quantity;
+    }, 0);
+
+    const totalCost = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0); 
 
     return (
         <div className="checkout-section">
@@ -17,6 +27,10 @@ const Checkout = () => {
                 <h1>Classya Checkout</h1>
                 <p>Provide your personal and payment information to complete the purchase!</p>
             </div>
+            <div className="shopping-cart-info">
+                <h3>Total Items: {quantity}</h3>
+                <h3>Total Amount: ${totalCost}</h3>
+            </div> 
             <div className="personal-info">
                 <h3>Personal Information</h3>
                 <form>
@@ -91,7 +105,6 @@ const Checkout = () => {
                 <Link to="/" style={{ textDecoration: 'none' }}>
                     <button>Cancel</button>
                 </Link>
-
             </div>
         </div>
     );

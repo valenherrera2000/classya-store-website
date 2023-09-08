@@ -6,22 +6,24 @@ import NavBar from './components/NavBar.jsx';
 import Footer from './components/Footer.jsx';
 import Checkout from './components/Checkout.jsx';
 import CheckoutFinish from './components/FinishButton.jsx';
+import { ShoppingCartProvider } from './components/ShoppingContext';
 import App from './App.jsx';
 import './css/index.css';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        
+    <ShoppingCartProvider>
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={<App />} />
           <Route path="/navbar" element={<NavBar />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/finish" element={<CheckoutFinish />} />
           <Route path="/footer" element={<Footer />} />
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </ShoppingCartProvider>
   </React.StrictMode>
 );

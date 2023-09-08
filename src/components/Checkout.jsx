@@ -6,14 +6,16 @@ import '../css/Checkout.css';
 
 const Checkout = () => {
 
-    const [cart, setCart] = useContext(CartContext);
+    const [cart] = useContext(CartContext);
 
-    // Calculate total quantity and total cost
+
     const quantity = cart.reduce((acc, curr) => {
         return acc + curr.quantity;
     }, 0);
 
-    const totalCost = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0); 
+
+    const totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+    const totalCost = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
 
     return (
         <div className="checkout-section">
@@ -28,9 +30,9 @@ const Checkout = () => {
                 <p>Provide your personal and payment information to complete the purchase!</p>
             </div>
             <div className="shopping-cart-info">
-                <h3>Total Items: {quantity}</h3>
+                <h3>Total Items: {totalQuantity}</h3>
                 <h3>Total Amount: ${totalCost}</h3>
-            </div> 
+            </div>
             <div className="personal-info">
                 <h3>Personal Information</h3>
                 <form>

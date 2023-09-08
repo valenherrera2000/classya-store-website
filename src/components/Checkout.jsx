@@ -9,14 +9,6 @@ const Checkout = () => {
     const [cart] = useContext(CartContext);
 
 
-    const quantity = cart.reduce((acc, curr) => {
-        return acc + curr.quantity;
-    }, 0);
-
-
-    const totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
-    const totalCost = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
-
     return (
         <div className="checkout-section">
             <div className="back-button">

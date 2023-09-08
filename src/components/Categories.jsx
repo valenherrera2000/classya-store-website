@@ -1,69 +1,30 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { CartContext } from '../components/ShoppingContext';
+import { CartContext } from './ShoppingContext';
 
 const Categories = () => {
     /* Fetch products */
+    const [cart, setCart] = useContext(CartContext);
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true); // Add loading state
+    const [loading, setLoading] = useState(true); 
+
+    
+    // Conditional rendering when data is loading
+    if (loading) {
+        return <p>Loading...</p>;
+    }
 
     useEffect(() => {
         fetch('/products.json')
             .then((result) => result.json())
             .then((data) => {
                 setProducts(data.products);
-                setLoading(false); // Set loading to false when data is fetched
+                setLoading(false);
             })
             .catch((error) => console.log(error))
             .finally(() => console.log('Data has been retrieved successfully'));
     }, []);
 
     const categories = ['PANTS', 'SHIRTS', 'SWEATERS', 'ACCESSORIES'];
-
-    const [cart, setCart] = useContext(CartContext);
-
-    /* Add products */
-    const addToCart = (id, price) => {
-        setCart((currItems) => {
-            const isItemFound = currItems.find((item) => item.id === id);
-            if (isItemFound) {
-                return currItems.map((item) => {
-                    if (item.id === id) {
-                        return { ...item, quantity: item.quantity + 1 };
-                    } else {
-                        return item;
-                    }
-                });
-            } else {
-                return [...currItems, { id, quantity: 1, price }];
-            }
-        });
-    };
-
-    /* Remove products */
-    const removeItem = (id) => {
-        setCart((currItems) => {
-            if (currItems.find((item) => item.id === id)?.quantity === 1) {
-                return currItems.filter((item) => item.id !== id);
-            } else {
-                return currItems.map((item) => {
-                    if (item.id === id) {
-                        return { ...item, quantity: item.quantity - 1 };
-                    } else {
-                        return item;
-                    }
-                });
-            }
-        });
-    };
-
-    /* Archive quantity of products */
-    const quantity = cart.reduce((acc, curr) => {
-        return acc + curr.quantity;
-    }, 0);
-
-    const getQuantityByID = (id) => {
-        return cart.find((item) => item.id === id)?.quantity || 0;
-    };
 
     // Define getCategoryName function
     const getCategoryName = (productId) => {
@@ -77,11 +38,6 @@ const Categories = () => {
             return 'ACCESSORIES';
         }
     };
-
-    // Conditional rendering when data is loading
-    if (loading) {
-        return <p>Loading...</p>;
-    }
 
     return (
         <div className="category-section">

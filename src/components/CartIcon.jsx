@@ -1,10 +1,10 @@
+// CartIcon.jsx
 import React, { useContext } from 'react';
 import cartImg from '../assets/img/shopping-cart-icon.png';
-import { CartContext } from './ShoppingContext';
+import { CartContext } from '../context/ShoppingContext';
 
 const Cart = () => {
-
-    const [cart, setCart] = useContext(CartContext);
+    const { cart } = useContext(CartContext);
 
     const quantity = cart.reduce((acc, curr) => {
         return acc + curr.quantity;
@@ -18,4 +18,4 @@ const Cart = () => {
     );
 };
 
-export { Cart };
+export default Cart;

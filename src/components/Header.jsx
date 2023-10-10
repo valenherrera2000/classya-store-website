@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Cart } from './CartIcon';
+import Cart from './CartIcon';
 import homeBannerImg from '../assets/img/home-banner.png';
 import menuImg from '../assets/img/menu-icon.png';
 

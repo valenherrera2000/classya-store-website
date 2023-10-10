@@ -1,5 +1,6 @@
+// Categories.jsx
 import React, { useState, useEffect, useContext } from 'react';
-import { CartContext } from './ShoppingContext';
+import { CartContext } from '../context/ShoppingContext';
 
 const Categories = () => {
     /* Fetch products */
@@ -7,64 +8,41 @@ const Categories = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('/products.json')
-            .then((result) => result.json())
+        fetch('src/data/products.json')
+            .then((result) => {
+                if (!result.ok) {
+                    throw new Error('Failed to fetch');
+                }
+                return result.json();
+            })
             .then((data) => {
                 setProducts(data.products);
             })
             .catch((error) => console.log(error))
             .finally(() => console.log('Data has been retrieved successfully'));
     }, []);
+    
+    
 
     const categories = ['PANTS', 'SHIRTS', 'SWEATERS', 'ACCESSORIES'];
 
-    const [cart, setCart] = useContext(CartContext);
-
-    /* Add products */
-    const addToCart = (id, price) => {
-        setCart((currItems) => {
-            const isItemFound = currItems.find((item) => item.id === id);
-            if (isItemFound) {
-                return currItems.map((item) => {
-                    if (item.id === id) {
-                        return { ...item, quantity: item.quantity + 1 };
-                    } else {
-                        return item;
-                    }
-                });
-            } else {
-                return [...currItems, { id, quantity: 1, price }];
-            }
-        });
-    };
-
-    /* Remove products */
-    const removeItem = (id) => {
-        setCart((currItems) => {
-            if (currItems.find((item) => item.id === id)?.quantity === 1) {
-                return currItems.filter((item) => item.id !== id);
-            } else {
-                return currItems.map((item) => {
-                    if (item.id === id) {
-                        return { ...item, quantity: item.quantity - 1 };
-                    } else {
-                        return item;
-                    }
-                });
-            }
-        });
-    };
-
-    /* Archive quantity of products */
-    const quantity = cart.reduce((acc, curr) => {
-        return acc + curr.quantity;
-    }, 0);
+    const { cart, addToCart, removeFromCart, getTotalQuantity, getTotalCost } = useContext(CartContext);
 
     const getQuantityByID = (id) => {
         return cart.find((item) => item.id === id)?.quantity || 0;
     };
 
-    
+    const handleAddToCart = (product) => {
+        addToCart(product.id, product.price);
+    };
+
+    const handleRemoveFromCart = (productId) => {
+        removeFromCart(productId);
+    };
+
+    console.log("Cart in Categories component:", cart);
+
+
     // Define getCategoryName function
     const getCategoryName = (productId) => {
         if (productId >= 1 && productId <= 4) {
@@ -77,8 +55,6 @@ const Categories = () => {
             return 'ACCESSORIES';
         }
     };
-
-
 
     return (
         <div className="category-section">
@@ -102,7 +78,7 @@ const Categories = () => {
                                                 <button onClick={() => addToCart(product.id, product.price)}>+</button>
                                             ) : (
                                                 <div className="selected-products">
-                                                    <button onClick={() => removeItem(product.id)}>-</button>
+                                                    <button onClick={() => removeFromCart(product.id)}>-</button>
                                                     <p>{quantityPerItem}</p>
                                                     <button onClick={() => addToCart(product.id, product.price)}>+</button>
                                                 </div>

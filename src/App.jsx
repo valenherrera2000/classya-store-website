@@ -6,13 +6,11 @@ import StoreDetails from './components/StoreDetails';
 import Categories from './components/Categories';
 import BottomDetails from './components/BottomDetails';
 import Footer from './components/Footer';
-import { ShoppingCartProvider } from './components/ShoppingContext';
-
 import './css/App.css';
 
 function App() {
   return (
-    <ShoppingCartProvider>
+    <>
       <header>
         <Header />
         <StoreDetails />
@@ -25,7 +23,7 @@ function App() {
       <footer>
         <Footer />
       </footer>
-    </ShoppingCartProvider>
+      </>
   );
 }
 

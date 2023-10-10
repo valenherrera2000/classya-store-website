@@ -6,7 +6,7 @@ import NavBar from './components/NavBar.jsx';
 import Footer from './components/Footer.jsx';
 import Checkout from './components/Checkout.jsx';
 import CheckoutFinish from './components/FinishButton.jsx';
-import { ShoppingCartProvider } from './components/ShoppingContext';
+import { ShoppingCartProvider } from './context/ShoppingContext.jsx';
 import App from './App.jsx';
 import './css/index.css';
 

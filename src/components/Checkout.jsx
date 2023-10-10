@@ -1,19 +1,15 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classyaLogo from '../assets/img/classya-icon.png';
-import { CartContext } from './ShoppingContext';
+import { CartContext } from '../context/ShoppingContext';
 import '../css/Checkout.css';
 
 const Checkout = () => {
-
-    const [cart] = useContext(CartContext);
+    const { cart, getTotalQuantity, getTotalCost, clearCart } = useContext(CartContext);
 
     /* Calculate Amounts */
-
-
-    const totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
-    const totalCost = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
-
+    const totalQuantity = getTotalQuantity();
+    const totalCost = getTotalCost();
 
     return (
         <div className="checkout-section">
@@ -71,6 +67,7 @@ const Checkout = () => {
                 <form>
                     <label htmlFor="cardNumber">Card Number</label>
                     <input type="text" id="cardNumber" name="cardNumber" required />
+
                     <div className="inline-inputs">
                         <div>
                             <label htmlFor="expiryMonth">Expiry Month</label>
@@ -81,6 +78,7 @@ const Checkout = () => {
                             <input type="text" id="expiryYear" name="expiryYear" required />
                         </div>
                     </div>
+
                     <label htmlFor="securityCode">Security Code</label>
                     <input type="text" id="securityCode" name="securityCode" required />
                 </form>
@@ -100,10 +98,10 @@ const Checkout = () => {
             </div>
             <div className="checkout-buttons">
                 <Link to="/finish" style={{ textDecoration: 'none' }}>
-                    <button>Finish</button>
+                    <button onClick={clearCart}>Finish</button> 
                 </Link>
                 <Link to="/" style={{ textDecoration: 'none' }}>
-                    <button>Cancel</button>
+                    <button onClick={clearCart}>Cancel</button> 
                 </Link>
             </div>
         </div>
